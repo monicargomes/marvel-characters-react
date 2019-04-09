@@ -1,0 +1,21 @@
+.carousel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+}
+.carousel-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+.carousel-big-item {
+	width: 140px;
+    height: 280px;
+    margin-right: 1ch;
+}
+.carousel-img{
+    height: 100%;
+    width: 100%;
+}

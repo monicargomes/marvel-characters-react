@@ -47,18 +47,45 @@
     text-align: justify;
 }
 
+.feature-comics{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+}
+
+.feature-comics__container{
+    width: 70px;
+    height: 100px;
+    margin-right: 1ch;
+}
+
 @media (min-width: 768px) {    
     .featured-character__header {
         display: flex;
         text-align: left;
         align-items: center;
     }
-
+    
     .feature-character__img {
         margin-right: 1rem;
     }
-
+    
     .featured-character__links{
         justify-content: flex-start;
+    }
+
+    .feature-comics{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .feature-comics__container{
+        width: 100px;
+        height: 150px;
+        margin: 1ch;
+    }
+
+    .hidden {
+        visibility: hidden;
     }
 }

@@ -1,12 +1,14 @@
 import md5 from 'md5';
+import ApiKey from './apikey.enum';
 
-const MAX_RESULTS = 10;
-const PRIVATE_KEY = "f3dc6bee5afbcf48676136a33cda37a43f7c9d7e";
-const PUBLIC_KEY = "ff0a364af171967c9afa65f48246de25";
+const MAX_RESULTS = 20;
 const API_BASE_URL = 'https://gateway.marvel.com/v1/public/';
 const TOP_CHARACTERS_IDS = ['1009220', '1009351', '1009368', '1009189', '1009664', '1009610', '1009718', '1009262', '1009215'];
 
 class ApiHandler {
+    getMaxResults(){
+        return MAX_RESULTS;
+    }
     readCharacter(id, callback) {
         fetch(this.getReadCharactersURL(id))
         .then(response => response.json())
@@ -19,30 +21,25 @@ class ApiHandler {
     }
     
     readCharacterByName(name, callback) {
-        fetch(this.getReadCharacterByNameURL(name), {
-            limit: MAX_RESULTS
-        })
+        fetch(this.getReadCharacterByNameURL(name))
         .then(response => response.json())
         .then(response => callback(response.data.results))
         .catch(error => this.processRequestError(error));
     }
     
     getReadCharacterByNameURL(name) {
-        return `${API_BASE_URL}characters?nameStartsWith=${name}&${this.getHash()}`;
+        return `${API_BASE_URL}characters?nameStartsWith=${name}&limit=${MAX_RESULTS}&${this.getHash()}`;
     }
     
     listCharacters(offset, callback) {
-        fetch(this.getListCharactersURL(), {
-            limit: MAX_RESULTS,
-            offset: offset
-        })
+        fetch(this.getListCharactersURL(offset))
         .then(response => response.json())
         .then(response => callback(response.data.results))
         .catch(error => this.processRequestError(error));
     }
     
-    getListCharactersURL() {
-        return `${API_BASE_URL}characters?${this.getHash()}`;
+    getListCharactersURL(offset) {
+        return `${API_BASE_URL}characters?limit=${MAX_RESULTS}&offset=${offset}&${this.getHash()}`;
     }
     
     listTopCharacters(callback) {
@@ -62,7 +59,7 @@ class ApiHandler {
         const offset = Math.floor(Math.random() * 1000);
         this.listCharacters(offset, (characters) => {
             const index = Math.floor(Math.random() * characters.length);
-            callback(characters[index]);
+            callback(characters[index].id);
         })
     }
 
@@ -87,8 +84,8 @@ class ApiHandler {
 
     getHash() {
         const timestamp = new Date().getTime();
-        const md5Hash = md5(timestamp + PRIVATE_KEY + PUBLIC_KEY);
-        return `ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${md5Hash}`;
+        const md5Hash = md5(timestamp + ApiKey.PRIVATE + ApiKey.PUBLIC);
+        return `ts=${timestamp}&apikey=${ApiKey.PUBLIC}&hash=${md5Hash}`;
     }
     
 }

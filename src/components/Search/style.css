@@ -37,7 +37,6 @@
     padding: 1rem;
     background-color: var(--primary-dark-color);
     border-radius: 4px;
-    cursor: pointer;
     line-height: 2rem;
     position: absolute;
     left: 0;
@@ -52,6 +51,7 @@
 @media (min-width: 768px) {    
     .icon-search {
         font-size: 1.3rem;
+        cursor: pointer;
     }
 
     .search-input {
@@ -62,5 +62,6 @@
     
     .search-dropdown {
         line-height: 1.5rem;
+        cursor: pointer;
     }
 }

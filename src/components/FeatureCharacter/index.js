@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import FeatureComics from '../FeatureComics'
+import ImageLoader from '../ImageLoader';
 import './style.css';
 
 const EMPTY_DESCRIPTION = 'Sorry, there is no description for this character.';
+// const EMPTY_COMICS = 'Sorry, there is no comic books for this character.';
 
 class FeatureCharacter extends Component {
     getCharacterImageURL(character) {
@@ -27,7 +28,12 @@ class FeatureCharacter extends Component {
                 <h2>Description</h2>
                 <p className="feature-character__description">{character.description ? character.description : EMPTY_DESCRIPTION}</p>
                 <h2>Comics</h2>
-                <FeatureComics comics={comics}/>
+                {
+                    comics && comics.length > 0 &&
+                    <ul className="feature-comics">
+                        {comics.map((comic, idx) => <li key={idx} className="feature-comics__container"><ImageLoader src={comic} alt="Comics"/></li>)}
+                    </ul>
+                }
             </div>
         );
     }

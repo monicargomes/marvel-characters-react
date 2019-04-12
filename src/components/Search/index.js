@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import './style.css';
 import '../../icons/style.css';
 
-
 class Search extends Component {
     constructor(props) {
         super (props);

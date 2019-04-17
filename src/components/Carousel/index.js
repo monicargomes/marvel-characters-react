@@ -38,8 +38,8 @@ class Carousel extends Component {
 
     getClassName(size) {
         return (size === 'big') 
-            ? 'carousel carousel-big-items' 
-            : 'carousel carousel-default-items';
+            ? 'carousel carousel__items--big' 
+            : 'carousel carousel__items--default';
     }
 
     scrollLeft(event){
@@ -68,19 +68,19 @@ class Carousel extends Component {
             <div>
                 <h2>{title && title}</h2>
                 <div className={this.getClassName(size)}>
-                    <span className="carousel-icon icon-chevron-left" onClick={this.scrollLeft}/>
-                    <div className="carousel-outer-container" onScroll={this.infiniteScroll}>
-                        <ul className="carousel-inner-container">
+                    <span className="carousel__icon icon-chevron-left" onClick={this.scrollLeft}/>
+                    <div className="carousel__container--outer" onScroll={this.infiniteScroll}>
+                        <ul className="carousel__container--inner">
                             {
                                 characters.map((character,idx) => 
-                                <li key={idx} className="carousel-item" onClick={() => onCharacterClick(character.id)}>
-                                    <img alt="Character" className="carousel-item-img" src={this.getImageURL(character, size)}/>
-                                    <p className="carousel-item-details">{character.name}</p>
+                                <li key={idx} className="carousel__item" onClick={() => onCharacterClick(character.id)}>
+                                    <img alt="Character" className="carousel__item--img" src={this.getImageURL(character, size)}/>
+                                    <p className="carousel__item--details">{character.name}</p>
                                 </li>)
                             }
                         </ul>
                     </div>
-                    <span className="carousel-icon icon-chevron-right" onClick={this.scrollLeft}/>
+                    <span className="carousel__icon icon-chevron-right" onClick={this.scrollLeft}/>
                 </div>
             </div>
         );

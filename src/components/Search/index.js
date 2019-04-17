@@ -69,18 +69,18 @@ class Search extends Component {
 
         return (
             <div className={classNames('search', { active: searchActive, mobile: isMobile })}>
-                <div className="search-wrapper">
+                <div className="search__container">
                     <span className="icon-search" onClick={this.onIconClick}/>
                     <input 
                         type="text" 
                         placeholder="Search for character" 
                         onChange={this.searchCharacter} 
-                        className={classNames('search-input', { hidden: !searchActive })}
+                        className={classNames('search__input', { hidden: !searchActive })}
                     />
                 </div>
                 {
                     dropdownActive &&
-                    <ul className='search-dropdown'>
+                    <ul className='search__dropdown'>
                     {showLoader && <Loader/>}
                     {
                         searchResults.length > 0 && searchResults.map((character,idx) => 

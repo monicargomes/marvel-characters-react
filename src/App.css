@@ -28,7 +28,7 @@ header {
   align-items: center;
 }
 
-.header-logo {
+.header__logo {
   height: 40px;
   width: 100px;
   background: url('./img/marvel-logo.png');

@@ -35,7 +35,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="header">
-          <a href='#' className="header-logo"></a>
+          <a href='#' className="header__logo"></a>
           <Search onCharacterClick={this.onCharacterClick}/>
         </header>
         <main>

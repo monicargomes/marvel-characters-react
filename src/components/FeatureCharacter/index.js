@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ImageLoader from '../ImageLoader';
+import Loader from '../Loader';
 import ApiHandler from '../../api/api-handler';
 import './style.css';
 
@@ -73,7 +74,7 @@ class FeatureCharacter extends Component {
                     : <p>{EMPTY_COMICS}</p>
                 }
             </div>
-            : <span className="image-loader__spinner icon-circle-o-notch"></span>
+            : <Loader/>
         );
     }
 }

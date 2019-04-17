@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
+import Loader from '../Loader';
 import './style.css';
 
 class ImageLoader extends Component {
@@ -19,7 +20,7 @@ class ImageLoader extends Component {
         
         return (
             <div className="image-loader">
-                {!imageLoaded && <div className="image-loader__placeholder"><span className="image-loader__spinner icon-circle-o-notch"></span></div>}
+                {!imageLoaded && <Loader className="image-loader__placeholder"/>}
                 <img alt={alt} className={classNames('image-loader__img', {hidden: !imageLoaded})} onLoad={this.onImageLoad} src={src}/>
             </div>
         );

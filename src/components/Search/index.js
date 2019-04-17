@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ApiHandler from '../../api/api-handler';
 import classNames from 'classnames';
+import Loader from '../Loader';
 import './style.css';
 import '../../icons/style.css';
 
@@ -12,6 +13,8 @@ class Search extends Component {
             isMobile: false,
             searchActive: false,
             searchResults: [],
+            dropdownActive: false,
+            showLoader: false,
         }
         this.searchCharacter = this.searchCharacter.bind(this);
         this.onIconClick = this.onIconClick.bind(this);
@@ -39,10 +42,14 @@ class Search extends Component {
     searchCharacter(event) {
         const query = event.target.value;
 
+        this.setState({dropdownActive: true});
+
+        if(this.state.searchResults.length === 0) this.setState({showLoader: true}); 
+
         if(query.length % 3 === 0) {
             query === '' 
-                ? this.setState({searchResults: []}) 
-                : this.apiHandler.listCharacters(query, null, results => this.setState({searchResults: results}));
+                ? this.setState({searchResults: [], showLoader: false, dropdownActive: false}) 
+                : this.apiHandler.listCharacters(query, null, results => this.setState({searchResults: results, showLoader: false}));
         }
     }
     
@@ -51,13 +58,14 @@ class Search extends Component {
 
         this.setState({
             searchResults: [], 
-            searchActive: false
+            searchActive: false,
+            dropdownActive: false,
         });
         onCharacterClick(id);
     }
 
     render() {
-        const { searchResults, searchActive, isMobile } = this.state;
+        const { searchResults, searchActive, isMobile, dropdownActive, showLoader } = this.state;
 
         return (
             <div className={classNames('search', { active: searchActive, mobile: isMobile })}>
@@ -71,10 +79,11 @@ class Search extends Component {
                     />
                 </div>
                 {
-                    searchResults.length > 0 &&
-                    <ul className={classNames('search-dropdown',{ hidden: !searchActive })}>
+                    dropdownActive &&
+                    <ul className='search-dropdown'>
+                    {showLoader && <Loader/>}
                     {
-                        searchResults.map((character,idx) => 
+                        searchResults.length > 0 && searchResults.map((character,idx) => 
                         <li key={idx} ref={character.id} onClick={() => this.renderCharacter(character.id)}>
                             {character.name}
                         </li>

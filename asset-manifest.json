@@ -1,5 +1,5 @@
 {
-  "main.css": "/marvel-characters-react/static/css/main.c8b54d63.chunk.css",
+  "main.css": "/marvel-characters-react/static/css/main.d5318f6a.chunk.css",
   "main.js": "/marvel-characters-react/static/js/main.e307a10a.chunk.js",
   "main.js.map": "/marvel-characters-react/static/js/main.e307a10a.chunk.js.map",
   "runtime~main.js": "/marvel-characters-react/static/js/runtime~main.57ecea38.js",
@@ -7,9 +7,9 @@
   "static/js/2.fa9bad15.chunk.js": "/marvel-characters-react/static/js/2.fa9bad15.chunk.js",
   "static/js/2.fa9bad15.chunk.js.map": "/marvel-characters-react/static/js/2.fa9bad15.chunk.js.map",
   "index.html": "/marvel-characters-react/index.html",
-  "precache-manifest.2a7eddd1485972d51ec657a45ac23909.js": "/marvel-characters-react/precache-manifest.2a7eddd1485972d51ec657a45ac23909.js",
+  "precache-manifest.aaae338c10679b4ee8de07941eb027fa.js": "/marvel-characters-react/precache-manifest.aaae338c10679b4ee8de07941eb027fa.js",
   "service-worker.js": "/marvel-characters-react/service-worker.js",
-  "static/css/main.c8b54d63.chunk.css.map": "/marvel-characters-react/static/css/main.c8b54d63.chunk.css.map",
+  "static/css/main.d5318f6a.chunk.css.map": "/marvel-characters-react/static/css/main.d5318f6a.chunk.css.map",
   "static/media/style.css": "/marvel-characters-react/static/media/icomoon.8969edff.svg",
   "static/media/App.css": "/marvel-characters-react/static/media/marvel-logo.77a0b8d8.png"
 }

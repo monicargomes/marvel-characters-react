@@ -11,7 +11,7 @@ class ImageLoader extends Component {
         this.onImageLoad = this.onImageLoad.bind(this);
     }
     onImageLoad() {
-        this.setState({imageLoaded: true})
+        this.setState({imageLoaded: true});
     }
     render() {
         const { src, alt } = this.props;
@@ -19,7 +19,7 @@ class ImageLoader extends Component {
         
         return (
             <div className="image-loader">
-                {!imageLoaded && <div className="image-loader__placeholder">Loading...</div>}
+                {!imageLoaded && <div className="image-loader__placeholder"><span className="image-loader__spinner icon-circle-o-notch"></span></div>}
                 <img alt={alt} className={classNames('image-loader__img', {hidden: !imageLoaded})} onLoad={this.onImageLoad} src={src}/>
             </div>
         );

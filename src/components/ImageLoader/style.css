@@ -6,6 +6,9 @@
     width: 100%;
     height: 100%;
     background-color: var(--primary-dark-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .image-loader__img{
@@ -15,4 +18,18 @@
 
 .hidden {
     visibility: hidden;
+}
+
+.image-loader__spinner {
+    font-size: 2rem;
+    animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

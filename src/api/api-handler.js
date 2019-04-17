@@ -3,61 +3,39 @@ import ApiKey from './apikey.enum';
 
 const MAX_RESULTS = 20;
 const API_BASE_URL = 'https://gateway.marvel.com/v1/public/';
-const TOP_CHARACTERS_IDS = ['1009220', '1009351', '1009368', '1009189', '1009664', '1009610', '1009718', '1009262', '1009215'];
 
 class ApiHandler {
     getMaxResults(){
         return MAX_RESULTS;
     }
-    readCharacter(id, callback) {
-        fetch(this.getReadCharactersURL(id))
+
+    readCharacterById(id, callback) {
+        fetch(this.getReadCharacterByIdURL(id))
         .then(response => response.json())
         .then(response => callback(response.data.results[0]))
         .catch(error => this.processRequestError(error));
     }
     
-    getReadCharactersURL(id) {
+    getReadCharacterByIdURL(id) {
         return `${API_BASE_URL}characters/${id}?${this.getHash()}`;
     }
     
-    readCharacterByName(name, callback) {
-        fetch(this.getReadCharacterByNameURL(name))
+    listCharacters(name, offset, callback) {
+        fetch(this.getListCharactersURL(name, offset))
         .then(response => response.json())
         .then(response => callback(response.data.results))
         .catch(error => this.processRequestError(error));
     }
     
-    getReadCharacterByNameURL(name) {
-        return `${API_BASE_URL}characters?nameStartsWith=${name}&limit=${MAX_RESULTS}&${this.getHash()}`;
-    }
-    
-    listCharacters(offset, callback) {
-        fetch(this.getListCharactersURL(offset))
-        .then(response => response.json())
-        .then(response => callback(response.data.results))
-        .catch(error => this.processRequestError(error));
-    }
-    
-    getListCharactersURL(offset) {
-        return `${API_BASE_URL}characters?limit=${MAX_RESULTS}&offset=${offset}&${this.getHash()}`;
-    }
-    
-    listTopCharacters(callback) {
-        const characters = [];
-        TOP_CHARACTERS_IDS.forEach(id => {
-            this.readCharacter(id, character => {
-                characters.push(character);
-                // We call the callback only when all top chars finished reading
-                if (characters.length === TOP_CHARACTERS_IDS.length) {
-                    callback(characters);
-                }
-            })
-        })
+    getListCharactersURL(name, offset) {
+        return name 
+            ? `${API_BASE_URL}characters?nameStartsWith=${name}&limit=${MAX_RESULTS}&offset=${offset}&${this.getHash()}`
+            : `${API_BASE_URL}characters?limit=${MAX_RESULTS}&offset=${offset}&${this.getHash()}`;
     }
     
     readRandomCharacter(callback) {
         const offset = Math.floor(Math.random() * 1000);
-        this.listCharacters(offset, (characters) => {
+        this.listCharacters(null, offset, (characters) => {
             const index = Math.floor(Math.random() * characters.length);
             callback(characters[index].id);
         })

@@ -1,13 +1,22 @@
 .search {
     position: relative;
 }
+
+.mobile.active {
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background-color: var(--primary-dark-color);
+}
+
 .hidden {
     display: none;
 }
+
 .search-wrapper {
     display: flex;
     align-items: center;
-    background-color: var(--primary-dark-color);
 }
 
 .icon-search {
@@ -23,6 +32,7 @@
     border: none;
     border-bottom: 1px solid var(--input-color);
     color: var(--input-color);
+    animation: fadeIn .5s ease;
 }
 
 .search-input:focus {
@@ -41,11 +51,21 @@
     position: absolute;
     left: 0;
     right: 0;
+    animation: fadeIn .5s ease;
 }
 
 .search-dropdown li:hover {
     text-shadow: 2px 2px 2px var(--accent-color);
     font-weight: bolder;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @media (min-width: 768px) {    

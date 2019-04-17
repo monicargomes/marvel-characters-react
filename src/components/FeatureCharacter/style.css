@@ -19,7 +19,7 @@
 
 .feature-character__link {
     margin-right: 1ch;
-    transform: skew(-20deg);
+    transform: skew(-15deg);
     transition: background-color 0.5s;
     background-color: var(--accent-color);
     border: 1px solid var(--link-color);
@@ -49,14 +49,14 @@
 
 .feature-comics{
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: scroll;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .feature-comics__container{
     width: 70px;
     height: 100px;
-    margin-right: 1ch;
+    margin: .5ch;
 }
 
 @media (min-width: 768px) {    
@@ -72,11 +72,6 @@
     
     .featured-character__links{
         justify-content: flex-start;
-    }
-
-    .feature-comics{
-        flex-wrap: wrap;
-        justify-content: center;
     }
     
     .feature-comics__container{

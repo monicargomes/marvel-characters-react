@@ -3,6 +3,7 @@ import ApiHandler from './api/api-handler';
 import Search from './components/Search';
 import FeatureCharacter from './components/FeatureCharacter';
 import Carousel from './components/Carousel';
+import './App.css';
 
 class App extends Component {
   constructor(props){
@@ -34,7 +35,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="header">
-          <img src="http://vinylmationworld.com/VMworldmob/wordpress/wp-content/uploads/2013/07/Marvel-Logo.png" alt="Marvel logo" className="header-logo"></img>
+          <a href='#' className="header-logo"></a>
           <Search onCharacterClick={this.onCharacterClick}/>
         </header>
         <main>

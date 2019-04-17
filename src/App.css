@@ -29,8 +29,12 @@ header {
 }
 
 .header-logo {
-  height: 100%;
-  z-index: -1;
+  height: 40px;
+  width: 100px;
+  background: url('./img/marvel-logo.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 main {

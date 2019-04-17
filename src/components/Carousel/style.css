@@ -8,18 +8,15 @@
 	--item-height: calc(var(--item-width) * 14 / 19);;
 }
 
-.carousel-icon {
-	display: none;
-}
-
-/* =========================================================== */
-/* CONTAINERS */
 .carousel {
     display: flex;
     align-items: center;
 }
 
-/* OUTER */
+.carousel-icon {
+	display: none;
+}
+
 .carousel-outer-container {
     overflow: scroll;
 }
@@ -28,7 +25,6 @@
     display: none;
 }
 
-/* INNER */
 .carousel-inner-container {
     display: flex;
 	flex-wrap: nowrap;
@@ -36,8 +32,6 @@
     padding: 2rem 0;
 }
 
-/* =========================================================== */
-/* CAROUSEL ITEM */
 .carousel-item {
 	position: relative;
 	width: var(--item-width);
@@ -48,15 +42,11 @@
 	transition: var(--transition-time);
 }
 
-/* =========================================================== */
-/* ITEM ELEMENTS */
 .carousel-item-img {
 	width: var(--item-width);
     height: var(--item-height);
 }
 
-/* =========================================================== */
-/* ITEM DETAILS */
 .carousel-item-details {
     text-align: center;
 	position: absolute;

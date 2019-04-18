@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/marvel-characters-react/static/js/runtime~main.57ecea38.js"
   },
   {
-    "revision": "839b4ea4b05183e5c8c4",
+    "revision": "caa65a263f45370157a8",
     "url": "/marvel-characters-react/static/js/main.e307a10a.chunk.js"
   },
   {
@@ -32,11 +32,11 @@ self.__precacheManifest = [
     "url": "/marvel-characters-react/static/js/2.fa9bad15.chunk.js"
   },
   {
-    "revision": "839b4ea4b05183e5c8c4",
-    "url": "/marvel-characters-react/static/css/main.d5318f6a.chunk.css"
+    "revision": "caa65a263f45370157a8",
+    "url": "/marvel-characters-react/static/css/main.4824be9a.chunk.css"
   },
   {
-    "revision": "6e8115ebe02120eed9006ff7670dfcf1",
+    "revision": "21fa18ecf757ba35c105fd71bf5c53d5",
     "url": "/marvel-characters-react/index.html"
   }
 ];

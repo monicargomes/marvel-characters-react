@@ -18,7 +18,8 @@
 }
 
 .carousel__container--outer {
-    overflow: scroll;
+	overflow: scroll;
+	scrollbar-width: none;
 }
 
 .carousel__container--outer::-webkit-scrollbar {

@@ -29,8 +29,8 @@ class FeatureCharacter extends Component {
         }
       }
 
-    getCharacterImageURL(character) {
-        return character.thumbnail.path + "/standard_fantastic." + character.thumbnail.extension;
+    getCharacterImageURL(path, extension) {
+        return `${path}/standard_fantastic.${extension}`;
     }
 
     renderFeatureCharacter(id){
@@ -53,7 +53,11 @@ class FeatureCharacter extends Component {
             character ?
             <div className="featured-character">
                 <div className="featured-character__header">
-                    <img alt="Featured Character" className="feature-character__img" src={this.getCharacterImageURL(character)}/>
+                    <img 
+                        alt="Featured Character" 
+                        className="feature-character__img" 
+                        src={this.getCharacterImageURL(character.thumbnail.path, character.thumbnail.extension)}
+                    />
                     <div>
                         <h1>{character.name}</h1>
                         <ul className="featured-character__links">

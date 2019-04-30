@@ -1,0 +1,73 @@
+import React from 'react';
+import { shallow } from 'enzyme';
+import FeatureCharacter from './index';
+
+jest.mock('../../api/api-handler');
+
+describe('FeatureCharacter component', () =>{
+    const id = '123456';
+    const character = {
+        name: 'Hulk',
+        urls: [{
+            url: '', 
+            type: ''
+        }], 
+        thumbnail: {
+            path: 'path', 
+            extension: 'extension'
+        },
+        comics: {
+            items: []
+        }
+    };
+
+    let wrapper;
+    let instance;
+
+    function createComponent(){
+        wrapper = shallow(<FeatureCharacter featureCharacterId={null}/>);
+        instance = wrapper.instance();
+
+    }
+
+    beforeEach(() => {
+        createComponent();
+    });
+
+    it('Should render', () => {
+        wrapper.setState({character: character});
+        expect(wrapper.find('.featured-character').length).toBe(1);
+    });
+    it('Should call renderFeatureCharacter when a new featureCharacterId is passed', () => { 
+        instance.renderFeatureCharacter = jest.fn();
+        
+        expect(instance.props.featureCharacterId).toBe(null);
+        expect(instance.renderFeatureCharacter).not.toHaveBeenCalled();
+        
+        wrapper.setProps({ featureCharacterId: id });
+        
+        expect(instance.props.featureCharacterId).toBe(id);
+        expect(instance.renderFeatureCharacter).toHaveBeenCalled();
+        expect(instance.renderFeatureCharacter).toHaveBeenCalledWith(id);
+    })
+    
+    it('Should return right image URL', () => {
+        expect(instance.getCharacterImageURL('path', 'extension')).toBe('path/standard_fantastic.extension');
+    });
+
+    it('Should call de API and renderFeatureComics when renderFeatureCharacter is called', () => {
+        instance.renderFeatureComics = jest.fn();
+        
+        instance.renderFeatureCharacter(id);
+        
+        expect(instance.apiHandler.readCharacterById).toHaveBeenCalled();
+        expect(instance.renderFeatureComics).toHaveBeenCalled();
+        expect(instance.renderFeatureComics).toHaveBeenCalledWith(id);
+    });
+
+    it('Should call de API when renderFeatureComics is called', () => {
+        instance.renderFeatureComics(id);
+        
+        expect(instance.apiHandler.listComics).toHaveBeenCalled();
+    });
+})

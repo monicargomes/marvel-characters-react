@@ -30,10 +30,10 @@ class Carousel extends Component {
         }
     }
     
-    getImageURL(character, size) {
+    getImageURL(path, extension, size) {
         return (size === 'big')
-            ? `${character.thumbnail.path}/portrait_fantastic.${character.thumbnail.extension}`
-            : `${character.thumbnail.path}/landscape_large.${character.thumbnail.extension}`;
+            ? `${path}/portrait_fantastic.${extension}`
+            : `${path}/landscape_large.${extension}`;
     }
 
     getClassName(size) {
@@ -66,7 +66,7 @@ class Carousel extends Component {
         return (
             characters.length > 0 &&
             <div>
-                <h2>{title && title}</h2>
+                <h2>{title}</h2>
                 <div className={this.getClassName(size)}>
                     <span className="carousel__icon icon-chevron-left" onClick={this.scrollLeft}/>
                     <div className="carousel__container--outer" onScroll={this.infiniteScroll}>
@@ -74,7 +74,11 @@ class Carousel extends Component {
                             {
                                 characters.map((character,idx) => 
                                 <li key={idx} className="carousel__item" onClick={() => onCharacterClick(character.id)}>
-                                    <img alt="Character" className="carousel__item--img" src={this.getImageURL(character, size)}/>
+                                    <img 
+                                        alt="Character" 
+                                        className="carousel__item--img" 
+                                        src={this.getImageURL(character.thumbnail.path, character.thumbnail.extension, size)}
+                                    />
                                     <p className="carousel__item--details">{character.name}</p>
                                 </li>)
                             }

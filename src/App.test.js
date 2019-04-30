@@ -10,10 +10,16 @@ describe('App component', () =>{
         expect(wrapper.find('.App').length).toBe(1);
     });
     
-    it('Should change featureCharacterId state when onCharacterClick is called', () => {
+    it('Should change featureCharacterId state and call window.scrollTo when onCharacterClick is called', () => {
+        const id = '123456'
+        global.scrollTo = jest.fn();
+
         expect(wrapper.state('featureCharacterId')).toBe(null);
-        instance.onCharacterClick('123456');
-        expect(wrapper.state('featureCharacterId')).toBe('123456');
+        
+        instance.onCharacterClick(id);
+        
+        expect(wrapper.state('featureCharacterId')).toBe(id);
+        expect(global.scrollTo).toHaveBeenCalled();
     });
 
 })

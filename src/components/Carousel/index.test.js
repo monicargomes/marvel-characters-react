@@ -34,7 +34,7 @@ describe('Carousel component', () =>{
         expect(wrapper.find('.carousel').length).toBe(1);
     });
     
-    it('Should call de API only when the offset matches de characters length', () => {
+    it('Should call the API only when the offset matches the characters length', () => {
         expect(instance.apiHandler.listCharacters).toHaveBeenCalledTimes(1);
         expect(instance.apiHandler.getMaxResults).toHaveBeenCalledTimes(1);
         

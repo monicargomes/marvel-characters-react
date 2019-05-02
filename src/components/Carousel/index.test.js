@@ -29,7 +29,8 @@ describe('Carousel component', () =>{
         createComponent();
     });
 
-    it('Should render', () => {
+    it('Should render only when a list of characters is available', () => {
+        expect(wrapper.find('.carousel').length).toBe(0);
         wrapper.setState({characters: characters});
         expect(wrapper.find('.carousel').length).toBe(1);
     });

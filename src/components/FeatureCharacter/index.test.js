@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount} from 'enzyme';
 import FeatureCharacter from './index';
 
 jest.mock('../../api/api-handler');
@@ -25,7 +25,7 @@ describe('FeatureCharacter component', () =>{
     let instance;
 
     function createComponent(){
-        wrapper = shallow(<FeatureCharacter featureCharacterId={null}/>);
+        wrapper = mount(<FeatureCharacter featureCharacterId={null}/>);
         instance = wrapper.instance();
 
     }
@@ -34,10 +34,15 @@ describe('FeatureCharacter component', () =>{
         createComponent();
     });
 
-    it('Should render', () => {
+    it('Should render only with a character available', () => {
+        expect(wrapper.find('.featured-character').length).toBe(0);
+        expect(wrapper.find('.loader').length).toBe(1);
+
         wrapper.setState({character: character});
         expect(wrapper.find('.featured-character').length).toBe(1);
+        expect(wrapper.find('.loader').length).toBe(0);
     });
+    
     it('Should call renderFeatureCharacter when a new featureCharacterId is passed', () => { 
         instance.renderFeatureCharacter = jest.fn();
         
